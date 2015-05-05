@@ -20,9 +20,9 @@
 #include <iostream>
 #include "atom.h"
 
-#include "array_tools.hpp"
+#include "../lib/array_tools.hpp"
 
-#include "dcd_r.hpp"
+#include "../lib/dcd_r.hpp"
 
 using namespace std;
 
