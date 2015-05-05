@@ -29,7 +29,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {                
     // instance of a new object DCD_R attached to a dcd file 
-    DCD_R dcdf("cool3102.dcd");
+    DCD_R dcdf("../resources/production.dcd");
     
     // read the header and print it
     dcdf.read_header();
