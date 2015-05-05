@@ -14,3 +14,4 @@
   - [ ] Test
 - [ ] Read in PDB/PSF
   - [ ] Test
+- [ ] Organization
