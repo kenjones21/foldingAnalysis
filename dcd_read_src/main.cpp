@@ -29,7 +29,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {                
     // instance of a new object DCD_R attached to a dcd file 
-    DCD_R dcdf("heat400.dcd");
+    DCD_R dcdf("cool3102.dcd");
     
     // read the header and print it
     dcdf.read_header();
@@ -39,8 +39,8 @@ int main(int argc, char* argv[])
 
     int count = 0;
 
-    Atom myAtom(1,1,0,0,0);
-    Atom otherAtom(1,2,1,0,0);
+    Atom myAtom(1,1,0,0,0,0);
+    Atom otherAtom(1,2,1,0,0,0);
     Atom* otherAtomPtr = &otherAtom;
     cout << "Distance from my atom to otherAtom is " << myAtom.distance(otherAtom) << endl;
     myAtom.makeBond(otherAtomPtr);

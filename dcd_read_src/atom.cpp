@@ -15,7 +15,7 @@ void Atom::newpos(float x, float y, float z) {
   this->z = z;
 }
 
-Atom::Atom (int elnum, int sysnum, float x, float y, float z) {
+Atom::Atom (int elnum, int sysnum, float x, float y, float z, float weight) {
   if (debug) {
     cout << "Creating to atom, sysnum " << sysnum << " elnum " << elnum << endl;
   }
@@ -24,6 +24,7 @@ Atom::Atom (int elnum, int sysnum, float x, float y, float z) {
   this->x = x;
   this->y = y;
   this->z = z;
+  this->weight = weight;
 }
 
 float Atom::distance(Atom other) {
@@ -41,4 +42,20 @@ void Atom::makeBond(Atom* other) {
 
 void Atom::printBonds() {
   cout << "This atom is bonded to " << bondedTo.size() << " atoms" << endl;
+}
+
+bool Atom::isHeavy() {
+  return elnum > 2;
+}
+
+int Atom::getSysnum() {
+  return this->sysnum;
+}
+
+int Atom::getElnum() {
+  return this->elnum;
+}
+
+float Atom::getWeight() {
+  return this->weight;
 }
