@@ -7,11 +7,13 @@
 class Protein {
 
 private:
-  std::vector<Residue*> residues;
+  std::vector<Residue> residues;
 
 public:
   float center_of_mass();
-  
+  Protein();
+  void add_residue(Residue res);
+  int getNumRes();
   
 };
 

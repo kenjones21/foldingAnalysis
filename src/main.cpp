@@ -19,9 +19,9 @@
 #include <cstdlib>
 #include <iostream>
 #include "atom.h"
+#include "fileread.h"
 
 #include "../lib/array_tools.hpp"
-
 #include "../lib/dcd_r.hpp"
 
 using namespace std;
@@ -38,13 +38,6 @@ int main(int argc, char* argv[])
     const float *x,*y,*z;
 
     int count = 0;
-
-    Atom myAtom(1,1,0,0,0,0);
-    Atom otherAtom(1,2,1,0,0,0);
-    Atom* otherAtomPtr = &otherAtom;
-    cout << "Distance from my atom to otherAtom is " << myAtom.distance(otherAtom) << endl;
-    myAtom.makeBond(otherAtomPtr);
-    myAtom.printBonds();
     
     // in this loop the coordinates are read frame by frame
     for(int frame=0;frame<dcdf.getNFILE();frame++)
@@ -58,17 +51,15 @@ int main(int argc, char* argv[])
         z = dcdf.getZ();
 
         if (count == 0) {
-          cout << x[0] << endl;
-          cout << sizeof(*x) << endl;
+          Fileread f("../resources/alb_final_ion.pdb",
+                     "../resources/alb_final_ion.psf");
+          f.initSystem();
         }
         count++;
         
         /* ... */
         
     }
-    cout << x[0] << endl;
-    cout << y[0] << endl;
-    cout << z[0] << endl;
     
     return EXIT_SUCCESS;
 }

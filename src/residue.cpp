@@ -9,9 +9,9 @@ std::string Residue::get1code() {
   return this->code1;
 }
 
-Atom* Residue::getAtom(int sysnum) {
-  for (std::vector<Atom*>::iterator it = atoms.begin(); it != atoms.end(); it++) {
-    if ((*it)->getSysnum() == sysnum) {
+Atom Residue::getAtom(int sysnum) {
+  for (std::vector<Atom>::iterator it = atoms.begin(); it != atoms.end(); it++) {
+    if ((it)->getSysnum() == sysnum) {
       return *it;
     }
     else {
@@ -20,28 +20,34 @@ Atom* Residue::getAtom(int sysnum) {
   }
 }
 
-std::vector<Atom*> Residue::getAllAtoms() {
+std::vector<Atom> Residue::getAllAtoms() {
   return this->atoms;
 }
 
-std::vector<Atom*> Residue::getHeavyAtoms() {
-  std::vector<Atom*> heavyAtoms;
-  for (std::vector<Atom*>::iterator it = atoms.begin(); it != atoms.end(); it++) {
-    if ((*it)->isHeavy()) {
+std::vector<Atom> Residue::getHeavyAtoms() {
+  std::vector<Atom> heavyAtoms;
+  for (std::vector<Atom>::iterator it = atoms.begin(); it != atoms.end(); it++) {
+    if ((*it).isHeavy()) {
       heavyAtoms.push_back(*it);
     }
   }
   return heavyAtoms;
 }
 
-Residue::Residue(std::vector<Atom*> atoms, std::string code3, std::string code1) {
+Residue::Residue(std::vector<Atom> atoms, std::string code3, std::string code1) {
   this->atoms = atoms;
   this->code3 = code3;
   this->code1 = code1;
 }
 
-Residue::Residue(std::vector<Atom*> atoms) {
+Residue::Residue(std::vector<Atom> atoms) {
   this->atoms = atoms;
   this->code3 = "xxx";
   this->code1 = "x";
 }
+
+void Residue::addAtom(Atom atom) {
+  atoms.push_back(atom);
+}
+
+

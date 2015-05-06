@@ -10,16 +10,17 @@ class Residue {
 private:
   std::string code3;
   std::string code1;
-  std::vector<Atom*> atoms;  
+  std::vector<Atom> atoms;  
   
 public:
   std::string get3code();
   std::string get1code();
-  Atom* getAtom(int sysnum);
-  std::vector<Atom*> getAllAtoms();
-  std::vector<Atom*> getHeavyAtoms();
-  Residue(std::vector<Atom*> atoms, std::string code3, std::string code1);
-  Residue(std::vector<Atom*> atoms);
+  Atom getAtom(int sysnum);
+  std::vector<Atom> getAllAtoms();
+  std::vector<Atom> getHeavyAtoms();
+  Residue(std::vector<Atom> atoms, std::string code3, std::string code1);
+  Residue(std::vector<Atom> atoms);
+  void addAtom(Atom atom);
   
 };
 

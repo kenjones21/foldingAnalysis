@@ -27,6 +27,22 @@ Atom::Atom (int elnum, int sysnum, float x, float y, float z, float weight) {
   this->weight = weight;
 }
 
+Atom::Atom (int elnum, int sysnum, float weight) {
+  this->elnum = elnum;
+  this->sysnum = sysnum;
+  this->weight = weight;
+}
+
+Atom::Atom () {
+  
+}
+
+void Atom::setInfo(int elnum, int sysnum, float weight) {
+  this->elnum = elnum;
+  this->sysnum = sysnum;
+  this->weight = weight;
+}
+
 float Atom::distance(Atom other) {
   float xdist = this->x - other.x;
   float ydist = this->y - other.y;
