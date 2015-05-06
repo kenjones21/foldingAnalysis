@@ -10,10 +10,11 @@ private:
   std::vector<Residue> residues;
 
 public:
-  float center_of_mass();
+  std::vector<float> center_of_mass();
   Protein();
   void add_residue(Residue res);
   int getNumRes();
+  void updatePos(const float* x, const float* y, const float* z);
   
 };
 

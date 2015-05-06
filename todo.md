@@ -13,5 +13,7 @@
 - [x] Build Protein model
   - [ ] Test
 - [ ] Read in PDB/PSF
+  - [x] PDB
+  - [ ] PSF
   - [ ] Test
 - [x] Organization

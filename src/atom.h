@@ -15,6 +15,7 @@ private:
   std::vector<Atom*> bondedTo;
 
 public:
+  
   void newpos(float x, float y, float z);
   Atom (int elnum, int sysnum, float x, float y, float z, float weight);
   Atom (int elnum, int sysnum, float weight);
@@ -27,6 +28,9 @@ public:
   int getElnum();
   float getWeight();
   void setInfo (int elnum, int sysnum, float weight);
+  float getX();
+  float getY();
+  float getZ();
   
 };
 

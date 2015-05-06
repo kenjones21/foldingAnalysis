@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
     const float *x,*y,*z;
 
     int count = 0;
+    Protein alb;
     
     // in this loop the coordinates are read frame by frame
     for(int frame=0;frame<dcdf.getNFILE();frame++)
@@ -49,11 +50,17 @@ int main(int argc, char* argv[])
         x = dcdf.getX();
         y = dcdf.getY();
         z = dcdf.getZ();
-
+        
         if (count == 0) {
           Fileread f("../resources/alb_final_ion.pdb",
-                     "../resources/alb_final_ion.psf");
+                   "../resources/alb_final_ion.psf");
           f.initSystem();
+          alb = f.getProtein();
+          std::cout << alb.center_of_mass()[0] << std::endl;
+        }
+        if (count == 10) {
+          alb.updatePos(x, y, z);
+          std::cout << alb.center_of_mass()[0] << std::endl;
         }
         count++;
         

@@ -59,15 +59,20 @@ void Fileread::initSystem() {
     Residue res(atoms);
     protein.add_residue(res);
     std::cout << "Number of residues in protein: " << protein.getNumRes() << std::endl;
+    this->protein = protein;
   }
   else {
     std::cout << "Error opening PDB File" << std::endl;
   }
   std::ifstream psfFile(this->psfFileName);
   if (psfFile.is_open()) {
-    
+    // Connectivity stuff here
   }
   else {
     std::cout << "Error opening PSF File" << std::endl;
   }
+}
+
+Protein Fileread::getProtein() {
+  return this->protein;
 }

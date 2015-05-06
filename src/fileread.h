@@ -20,6 +20,7 @@ public:
   
   Fileread(std::string pdbFileName, std::string psfFileName);
   void initSystem();
+  Protein getProtein();
   
 };
 

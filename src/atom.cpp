@@ -4,15 +4,18 @@
 
 using namespace std;
 
-bool debug = true;
+bool debug = false;
 
 void Atom::newpos(float x, float y, float z) {
   if (debug) {
-    cout << "Assigning new position to atom " << this->sysnum << endl;
+    cout << this->x << " " << this->sysnum << endl;
   }
   this->x = x;
   this->y = y;
   this->z = z;
+  if (debug) {
+    cout << this->x << " " << this->sysnum << endl;
+  }
 }
 
 Atom::Atom (int elnum, int sysnum, float x, float y, float z, float weight) {
@@ -74,4 +77,16 @@ int Atom::getElnum() {
 
 float Atom::getWeight() {
   return this->weight;
+}
+
+float Atom::getX() {
+  return this->x;
+}
+
+float Atom::getY() {
+  return this->y;
+}
+
+float Atom::getZ() {
+  return this->z;
 }
