@@ -1,5 +1,6 @@
 #include "residue.h"
 #include <stdexcept>
+#include <iostream>
 
 std::string Residue::get3code() {
   return this->code3;
@@ -50,4 +51,19 @@ void Residue::addAtom(Atom atom) {
   atoms.push_back(atom);
 }
 
+Atom Residue::getAtom2(int arbnum) {
+  return atoms[arbnum];
+}
 
+void Residue::replaceAtom(Atom atom) {
+  bool errFlag = true;
+  for (uint i = 0; i < this->atoms.size(); i++) {
+    if (this->atoms[i].getSysnum() == atom.getSysnum()) {
+      atoms[i] = atom;
+      errFlag = false;
+    }
+  }
+  if (errFlag) {
+    std::cout << "ERROR IN REPLACE ATOM" << std::endl;
+  }
+}

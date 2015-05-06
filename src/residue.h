@@ -21,6 +21,8 @@ public:
   Residue(std::vector<Atom> atoms, std::string code3, std::string code1);
   Residue(std::vector<Atom> atoms);
   void addAtom(Atom atom);
+  Atom getAtom2(int arbnum);
+  void replaceAtom(Atom atom);
   
 };
 

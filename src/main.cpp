@@ -29,7 +29,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {                
     // instance of a new object DCD_R attached to a dcd file 
-    DCD_R dcdf("../resources/production.dcd");
+    DCD_R dcdf("../resources/noshake.dcd");
     
     // read the header and print it
     dcdf.read_header();
@@ -56,11 +56,12 @@ int main(int argc, char* argv[])
                    "../resources/alb_final_ion.psf");
           f.initSystem();
           alb = f.getProtein();
-          std::cout << alb.center_of_mass()[0] << std::endl;
-        }
-        if (count == 10) {
           alb.updatePos(x, y, z);
           std::cout << alb.center_of_mass()[0] << std::endl;
+          std::cout << "My x is " << alb.getAtom(7,2).getX() << std::endl;
+        }
+        if (count == 10) {
+          std::cout << x[852] << std::endl;
         }
         count++;
         

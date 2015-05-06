@@ -15,6 +15,7 @@ public:
   void add_residue(Residue res);
   int getNumRes();
   void updatePos(const float* x, const float* y, const float* z);
+  Atom getAtom(int resnum, int arbnum);
   
 };
 
