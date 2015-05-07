@@ -7,6 +7,9 @@ This is a library for analyzing a protein folding simulation. It is still in dev
 If, for some bizarre reason, you'd like to use your code, set up your project directory as follows. 
 
 lib: all read_dcd files except main
+
 src: as is
+
 output: blank
+
 resources: dcd, pdb, psf (unused currently) files
