@@ -1,3 +1,4 @@
 *.dcd
 lib/*
 resources/*
+output/*

@@ -30,7 +30,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {                
     // instance of a new object DCD_R attached to a dcd file 
-  DCD_R dcdf("../resources/noshake.dcd");
+  DCD_R dcdf("../resources/production.dcd");
   ofstream positions("../output/positions.csv");
   ofstream qval("../output/qval.csv");
     
