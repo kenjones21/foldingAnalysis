@@ -2,7 +2,9 @@
 
 ## Analysis
 
-- [ ] All of it
+- [x] Center of mass (heavy atoms only)
+  - [ ] Test
+
 
 ## Preparation Work
 
@@ -14,6 +16,6 @@
   - [ ] Test
 - [ ] Read in PDB/PSF
   - [x] PDB
-  - [ ] PSF
+  - [ ] PSF (Don't actually need this lol)
   - [ ] Test
 - [x] Organization

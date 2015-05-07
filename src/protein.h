@@ -8,6 +8,7 @@ class Protein {
 
 private:
   std::vector<Residue> residues;
+  static constexpr float DIST_CUTOFF = 5.f;
 
 public:
   std::vector<float> center_of_mass();
@@ -16,6 +17,7 @@ public:
   int getNumRes();
   void updatePos(const float* x, const float* y, const float* z);
   Atom getAtom(int resnum, int arbnum);
+  int calcQ();
   
 };
 

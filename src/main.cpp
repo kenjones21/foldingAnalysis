@@ -20,6 +20,7 @@
 #include <iostream>
 #include "atom.h"
 #include "fileread.h"
+#include <fstream>
 
 #include "../lib/array_tools.hpp"
 #include "../lib/dcd_r.hpp"
@@ -29,7 +30,9 @@ using namespace std;
 int main(int argc, char* argv[])
 {                
     // instance of a new object DCD_R attached to a dcd file 
-    DCD_R dcdf("../resources/noshake.dcd");
+  DCD_R dcdf("../resources/noshake.dcd");
+  ofstream positions("../output/positions.csv");
+  ofstream qval("../output/qval.csv");
     
     // read the header and print it
     dcdf.read_header();
@@ -57,12 +60,17 @@ int main(int argc, char* argv[])
           f.initSystem();
           alb = f.getProtein();
           alb.updatePos(x, y, z);
-          std::cout << alb.center_of_mass()[0] << std::endl;
-          std::cout << "My x is " << alb.getAtom(7,2).getX() << std::endl;
         }
-        if (count == 10) {
-          std::cout << x[852] << std::endl;
+        else {
+          alb.updatePos(x,y,z);
         }
+        
+        std::vector<float> com = alb.center_of_mass();
+        positions << count << "," << com[0] <<
+          "," << com[1] << "," << com[2] << std::endl;
+
+        qval << count << "," << alb.calcQ() << endl;
+        
         count++;
         
         /* ... */
