@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <map>
 
 /*
 Calculates center of mass. 
@@ -63,11 +64,12 @@ Atom Protein::getAtom(int resnum, int arbnum) {
 }
 
 /*
-Calculates # of residue heavy atoms "close" to other residue heavy atoms.
-Must be > 2 residues apart. Untested.
+Calculates # of residue heavy atoms "close" to other residue heavy atoms,
+if they are "close" in the native structure. Cannot be used before nativeContacts
+is initialized. Must be > 2 residues apart. Untested.
  */
-int Protein::calcQ() {
-  int ans = 0;
+float Protein::calcQ() {
+  float ans = 0.f;
   for (uint i = 0; i < residues.size(); i++) {
     std::vector<Atom> heavyAtoms = this->residues[i].getHeavyAtoms();
     for (uint j = i + 3; j < residues.size(); j++) {
@@ -76,11 +78,40 @@ int Protein::calcQ() {
         for (uint l = 0; l < otherHeavyAtoms.size(); l++) {
           // 4 nested for loops god damn
           if (heavyAtoms[k].distance(otherHeavyAtoms[l]) < DIST_CUTOFF) {
-            ans++;
+            std::pair<int, int> test(heavyAtoms[k].getSysnum(),
+                                     heavyAtoms[l].getSysnum());
+            if (this->nativeContacts.find(test) != this->nativeContacts.end()) {
+              ans += 1.0;
+            }
           }
         }
       }
     }
   }
+  ans /= nativeContacts.size();
   return ans;
+}
+
+/*
+Sets nativeContacts for the folded structure of an atom. 
+ */
+void Protein::setNativeContacts() {
+  std::set<std::pair<int, int>> ans;
+  for (uint i = 0; i < residues.size(); i++) {
+    std::vector<Atom> heavyAtoms = this->residues[i].getHeavyAtoms();
+    for (uint j = i + 3; j < residues.size(); j++) {
+      std::vector<Atom> otherHeavyAtoms = this->residues[j].getHeavyAtoms();
+      for (uint k = 0; k < heavyAtoms.size(); k++) {
+        for (uint l = 0; l < otherHeavyAtoms.size(); l++) {
+          // 4 nested for loops god damn
+          if (heavyAtoms[k].distance(otherHeavyAtoms[l]) < DIST_CUTOFF) {
+            std::pair<int, int> atoms(heavyAtoms[k].getSysnum(),
+                                      heavyAtoms[l].getSysnum());
+            ans.insert(atoms);
+          }
+        }
+      }
+    }
+  }
+  this->nativeContacts = ans;
 }

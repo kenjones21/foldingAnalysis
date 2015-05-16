@@ -3,12 +3,14 @@
 
 #include "residue.h"
 #include <vector>
+#include <set>
 
 class Protein {
 
 private:
   std::vector<Residue> residues;
   static constexpr float DIST_CUTOFF = 5.f;
+  std::set<std::pair<int, int>> nativeContacts;
 
 public:
   std::vector<float> center_of_mass();
@@ -17,7 +19,8 @@ public:
   int getNumRes();
   void updatePos(const float* x, const float* y, const float* z);
   Atom getAtom(int resnum, int arbnum);
-  int calcQ();
+  float calcQ();
+  void setNativeContacts();
   
 };
 
