@@ -49,16 +49,20 @@ int main(int argc, char* argv[])
         dcdf.read_oneFrame();
         
         /* your code goes here */
+        if (frame % 100 == 0) {
+          std::cout << "Frame " << frame << std::endl;
+        }
         
         x = dcdf.getX();
         y = dcdf.getY();
         z = dcdf.getZ();
         
         if (count == 0) {
-          Fileread f("../resources/alb_final_ion.pdb",
+          Fileread f("../resources/folded.pdb",
                    "../resources/alb_final_ion.psf");
           f.initSystem();
           alb = f.getProtein();
+          alb.setNativeContacts();
           alb.updatePos(x, y, z);
         }
         else {

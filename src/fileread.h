@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include "protein.h"
 
@@ -15,6 +16,7 @@ private:
   std::string psfFileName;
   std::vector<Atom> tempAtoms;
   Protein protein;
+  std::string readChars(std::string str, int schar, int echar);
 
 public:
   

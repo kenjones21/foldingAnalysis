@@ -113,5 +113,12 @@ void Protein::setNativeContacts() {
       }
     }
   }
+  std::set<std::pair<int, int>>::iterator iter;
+  int count = 0;
+  for(iter=ans.begin(); iter!=ans.end();++iter);{
+    //cout<<(*iter)<<endl;
+    count += 1;
+    std::cout << count << std::endl;
+  }
   this->nativeContacts = ans;
 }
