@@ -1,4 +1,4 @@
-- Transfer new dcd
-- Multiple dcd analysis
-- Video(s)
-- Pictures?
+- Transfer new dcd          DONE
+- Multiple dcd analysis     DONE
+- Video(s)                  DONE?
+- Pictures?                 DONE?

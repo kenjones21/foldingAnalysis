@@ -21,6 +21,7 @@
 #include "atom.h"
 #include "fileread.h"
 #include <fstream>
+#include <string>
 
 #include "../lib/array_tools.hpp"
 #include "../lib/dcd_r.hpp"
@@ -28,11 +29,11 @@
 using namespace std;
 
 int main(int argc, char* argv[])
-{                
+{
     // instance of a new object DCD_R attached to a dcd file 
-  DCD_R dcdf("../resources/production.dcd");
-  ofstream positions("../output/positions.csv");
-  ofstream qval("../output/qval.csv");
+  DCD_R dcdf("../resources/production22.dcd");
+  ofstream positions("../output/positions22.csv");
+  ofstream qval("../output/qval22.csv");
     
     // read the header and print it
     dcdf.read_header();
